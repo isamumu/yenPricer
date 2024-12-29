@@ -41,5 +41,5 @@ async function calculatePriceWithCurrencyRates(fixedFee) {
     }
 }
 
-const priceToChargeForeign = calculatePriceWithCurrencyRates(44000);
+const priceToChargeForeign = await calculatePriceWithCurrencyRates(44000);
 console.log(`Price to charge in foreign currency: $${priceToChargeForeign}`);
