@@ -24,6 +24,17 @@
   color: white;
 }
 
+body {
+  background-color: #89CFF0;
+  /* Replace with your desired color (dark grey in this case) */
+  margin: 0;
+  /* Removes any default margins */
+  padding: 0;
+  /* Removes any default padding */
+  font-family: Arial, sans-serif;
+  /* Optional: Set a consistent font */
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -32,6 +43,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

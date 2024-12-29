@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import {
+    AreaChart, Area,
+    CartesianGrid, XAxis, YAxis
+} from 'recharts';
 
 const fetchRate = async () => {
     try {
@@ -22,10 +26,16 @@ const calculatePriceWithCurrencyRates = async (fee) => {
         }
         const oneToOneRatio = 100; // Customize this value
         const bufferRate = 0.1; // Customize this value
-        const convertedBasePrice = fee / rate;
+        // Paypal overhead
+        const fixedFee = 49;
+        const percentageFee = 0.044;
+
+        // adjust for paypal
+        const augmentedFee = (fee + fixedFee) / (1 - percentageFee);
+        const convertedBasePrice = augmentedFee / rate;
 
         const priceNew = convertedBasePrice * (1 + bufferRate * Math.max(0, (rate - oneToOneRatio) / oneToOneRatio));
-        return parseFloat(priceNew.toFixed(2)); // Round to 2 decimal places
+        return [parseFloat(priceNew.toFixed(2)), rate]; // Round to 2 decimal places
     } catch (error) {
         console.error("Error in calculatePriceWithCurrencyRates:", error);
         throw error;
@@ -36,6 +46,7 @@ const CurrencyCalculator = () => {
     const [fixedFee, setFixedFee] = useState("");
     const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
+    const [rate, setRate] = useState("");
 
     const handleCalculate = async () => {
         setError(null); // Reset error state
@@ -45,9 +56,10 @@ const CurrencyCalculator = () => {
                 setError("Please enter a valid number for the fixed fee.");
                 return;
             }
-
             const calculatedPrice = await calculatePriceWithCurrencyRates(Number(fixedFee));
-            setResult(calculatedPrice); // Update the result state
+            setResult(calculatedPrice[0]); // Update the result state
+            setRate(calculatedPrice[1]);
+            console.log(rate)
         } catch (error) {
             setError(error.message || "An error occurred.");
         }
@@ -55,31 +67,107 @@ const CurrencyCalculator = () => {
 
     return (
         <div>
-            <h1>Currency Conversion Calculator</h1>
-            <div>
-                <label>
-                    Enter Fixed Fee (local currency):
-                    <input
-                        type="number"
-                        value={fixedFee}
-                        onChange={(e) => setFixedFee(e.target.value)}
-                        placeholder="e.g., 44000"
-                    />
-                </label>
-                <button onClick={handleCalculate}>Calculate</button>
+            <div style={styles.container}>
+                <h1 style={styles.title}>Currency Conversion Calculator</h1>
+                <div style={styles.inputContainer}>
+                    <label style={styles.label}>
+                        値段を入力してください:
+                        <input
+                            type="number"
+                            value={fixedFee}
+                            onChange={(e) => setFixedFee(e.target.value)}
+                            placeholder="例: 44000"
+                            style={styles.inputBox}
+                        />
+                        <span style={styles.inputLabel}><b>JPY</b></span>
+                    </label>
+                    <button onClick={handleCalculate} style={styles.button}>Calculate</button>
+                </div>
+                {result !== null && (
+                    <div style={styles.resultBox}>
+                        <h2>新しい値段: ${result}</h2>
+                        <h2>1 USD = ¥{rate}</h2>
+                    </div>
+                )}
+                {error && (
+                    <div style={styles.errorBox}>
+                        <p>{error}</p>
+                    </div>
+                )}
             </div>
-            {result !== null && (
-                <div>
-                    <h2>Price to Charge in Foreign Currency: ¥{result}</h2>
-                </div>
-            )}
-            {error && (
-                <div style={{ color: "red" }}>
-                    <p>{error}</p>
-                </div>
-            )}
         </div>
+
     );
+};
+
+const styles = {
+    container: {
+        fontFamily: "'Arial', sans-serif",
+        maxWidth: "600px",
+        margin: "0 auto", // Centers horizontally
+        padding: "20px",
+        textAlign: "center",
+        backgroundColor: "#FFFFFF",
+        borderRadius: "10px",
+        position: "absolute", // Required for vertical centering
+        top: "50%", // Pushes the container down 50% of the viewport height
+        left: "50%", // Pushes the container right 50% of the viewport width
+        transform: "translate(-50%, -50%)", // Offsets the position to center
+    },
+    title: {
+        fontSize: "35px",
+        color: "#2B3BFF",
+        marginBottom: "20px",
+        fontWeight: "bold",
+        fontFamily: "Poppins, sans-serif",
+    },
+    inputContainer: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "10px",
+        marginBottom: "20px",
+    },
+    label: {
+        fontSize: "16px",
+        color: "#555",
+    },
+    inputBox: {
+        width: "100%",
+        maxWidth: "300px",
+        padding: "10px",
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        fontSize: "16px",
+        marginTop: "5px",
+    },
+    button: {
+        padding: "10px 20px",
+        backgroundColor: "#5bb450",
+        color: "#fff",
+        border: "none",
+        borderRadius: "8px",
+        cursor: "pointer",
+        fontSize: "16px",
+        transition: "background-color 0.3s",
+    },
+    resultBox: {
+        marginTop: "20px",
+        padding: "10px",
+        backgroundColor: "#e6ffe6",
+        borderRadius: "8px",
+        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+    },
+    errorBox: {
+        marginTop: "20px",
+        padding: "10px",
+        backgroundColor: "#ffe6e6",
+        borderRadius: "8px",
+        color: "#d9534f",
+    },
+    buttonHover: {
+        backgroundColor: "#0056b3",
+    },
 };
 
 export default CurrencyCalculator;
