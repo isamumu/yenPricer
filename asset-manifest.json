@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/yenPricer/static/css/main.4e218a7b.chunk.css",
-    "main.js": "/yenPricer/static/js/main.ac5812f4.chunk.js",
-    "main.js.map": "/yenPricer/static/js/main.ac5812f4.chunk.js.map",
-    "runtime~main.js": "/yenPricer/static/js/runtime~main.10c08ee1.js",
-    "runtime~main.js.map": "/yenPricer/static/js/runtime~main.10c08ee1.js.map",
-    "static/js/2.ae026ab9.chunk.js": "/yenPricer/static/js/2.ae026ab9.chunk.js",
-    "static/js/2.ae026ab9.chunk.js.map": "/yenPricer/static/js/2.ae026ab9.chunk.js.map",
-    "static/js/3.ba8b7f13.chunk.js": "/yenPricer/static/js/3.ba8b7f13.chunk.js",
-    "static/js/3.ba8b7f13.chunk.js.map": "/yenPricer/static/js/3.ba8b7f13.chunk.js.map",
-    "index.html": "/yenPricer/index.html",
-    "precache-manifest.f9c307276b7f8451139382ba322e4a1b.js": "/yenPricer/precache-manifest.f9c307276b7f8451139382ba322e4a1b.js",
-    "service-worker.js": "/yenPricer/service-worker.js",
-    "static/css/main.4e218a7b.chunk.css.map": "/yenPricer/static/css/main.4e218a7b.chunk.css.map"
+    "main.css": "/yenPricer.github.io/static/css/main.4e218a7b.chunk.css",
+    "main.js": "/yenPricer.github.io/static/js/main.ac5812f4.chunk.js",
+    "main.js.map": "/yenPricer.github.io/static/js/main.ac5812f4.chunk.js.map",
+    "runtime~main.js": "/yenPricer.github.io/static/js/runtime~main.e754476b.js",
+    "runtime~main.js.map": "/yenPricer.github.io/static/js/runtime~main.e754476b.js.map",
+    "static/js/2.ae026ab9.chunk.js": "/yenPricer.github.io/static/js/2.ae026ab9.chunk.js",
+    "static/js/2.ae026ab9.chunk.js.map": "/yenPricer.github.io/static/js/2.ae026ab9.chunk.js.map",
+    "static/js/3.ba8b7f13.chunk.js": "/yenPricer.github.io/static/js/3.ba8b7f13.chunk.js",
+    "static/js/3.ba8b7f13.chunk.js.map": "/yenPricer.github.io/static/js/3.ba8b7f13.chunk.js.map",
+    "index.html": "/yenPricer.github.io/index.html",
+    "precache-manifest.5885fa7c22555584a9dd707fa446bcf1.js": "/yenPricer.github.io/precache-manifest.5885fa7c22555584a9dd707fa446bcf1.js",
+    "service-worker.js": "/yenPricer.github.io/service-worker.js",
+    "static/css/main.4e218a7b.chunk.css.map": "/yenPricer.github.io/static/css/main.4e218a7b.chunk.css.map"
   }
 }
