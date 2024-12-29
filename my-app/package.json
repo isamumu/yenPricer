@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://yenPricer.github.io/react-gh-pages",
+  "homepage": "https://isamumu.github.io/yenPricer",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.14.0",
