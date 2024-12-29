@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/yenPricer/static/css/main.abb97857.css",
-    "main.js": "/yenPricer/static/js/main.ee32edec.js",
-    "static/js/453.ed3810f9.chunk.js": "/yenPricer/static/js/453.ed3810f9.chunk.js",
+    "main.css": "/yenPricer/static/css/main.4e218a7b.chunk.css",
+    "main.js": "/yenPricer/static/js/main.ac5812f4.chunk.js",
+    "main.js.map": "/yenPricer/static/js/main.ac5812f4.chunk.js.map",
+    "runtime~main.js": "/yenPricer/static/js/runtime~main.10c08ee1.js",
+    "runtime~main.js.map": "/yenPricer/static/js/runtime~main.10c08ee1.js.map",
+    "static/js/2.ae026ab9.chunk.js": "/yenPricer/static/js/2.ae026ab9.chunk.js",
+    "static/js/2.ae026ab9.chunk.js.map": "/yenPricer/static/js/2.ae026ab9.chunk.js.map",
+    "static/js/3.ba8b7f13.chunk.js": "/yenPricer/static/js/3.ba8b7f13.chunk.js",
+    "static/js/3.ba8b7f13.chunk.js.map": "/yenPricer/static/js/3.ba8b7f13.chunk.js.map",
     "index.html": "/yenPricer/index.html",
-    "main.abb97857.css.map": "/yenPricer/static/css/main.abb97857.css.map",
-    "main.ee32edec.js.map": "/yenPricer/static/js/main.ee32edec.js.map",
-    "453.ed3810f9.chunk.js.map": "/yenPricer/static/js/453.ed3810f9.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.abb97857.css",
-    "static/js/main.ee32edec.js"
-  ]
+    "precache-manifest.f9c307276b7f8451139382ba322e4a1b.js": "/yenPricer/precache-manifest.f9c307276b7f8451139382ba322e4a1b.js",
+    "service-worker.js": "/yenPricer/service-worker.js",
+    "static/css/main.4e218a7b.chunk.css.map": "/yenPricer/static/css/main.4e218a7b.chunk.css.map"
+  }
 }
