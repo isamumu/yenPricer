@@ -122,6 +122,7 @@ const styles = {
     container: {
         fontFamily: "'Arial', sans-serif",
         display: 'flex',
+        alignItems: 'center',
         maxWidth: "600px",
         margin: "0 auto", // Centers horizontally
         padding: "20px",
