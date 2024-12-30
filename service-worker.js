@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/yenPricer.github.io/precache-manifest.d96e9096854633f3359b57464b678e6f.js"
+  "/yenPricer.github.io/precache-manifest.b98d00f5c02e8752e6b5c68676321fc2.js"
 );
 
 self.addEventListener('message', (event) => {
