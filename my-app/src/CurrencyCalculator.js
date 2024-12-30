@@ -18,7 +18,7 @@ const fetchRate = async () => {
     }
 };
 
-const calculatePriceWithCurrencyRates = async (fee) => {
+const calculatePriceWithCurrencyRates = async (fee, shippingFee) => {
     try {
         const rate = await fetchRate();
         if (!rate) {
@@ -32,10 +32,15 @@ const calculatePriceWithCurrencyRates = async (fee) => {
 
         // adjust for paypal
         const augmentedFee = (fee + fixedFee) / (1 - percentageFee);
+        const augmentedShippingFee = (shippingFee + fixedFee) / (1 - percentageFee);
         const convertedBasePrice = augmentedFee / rate;
+        const convertedShippingPrice = augmentedShippingFee / rate;
 
         const priceNew = convertedBasePrice * (1 + bufferRate * Math.max(0, (rate - oneToOneRatio) / oneToOneRatio));
-        return [parseFloat(priceNew.toFixed(2)), rate]; // Round to 2 decimal places
+        const newTotal = priceNew + convertedShippingPrice;
+        console.log(priceNew)
+        console.log(convertedShippingPrice)
+        return [parseFloat(newTotal.toFixed(2)), rate]; // Round to 2 decimal places
     } catch (error) {
         console.error("Error in calculatePriceWithCurrencyRates:", error);
         throw error;
@@ -44,6 +49,7 @@ const calculatePriceWithCurrencyRates = async (fee) => {
 
 const CurrencyCalculator = () => {
     const [fixedFee, setFixedFee] = useState("");
+    const [shippingFee, setShippingFee] = useState("");
     const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
     const [rate, setRate] = useState("");
@@ -56,7 +62,7 @@ const CurrencyCalculator = () => {
                 setError("Please enter a valid number for the fixed fee.");
                 return;
             }
-            const calculatedPrice = await calculatePriceWithCurrencyRates(Number(fixedFee));
+            const calculatedPrice = await calculatePriceWithCurrencyRates(Number(fixedFee), Number(shippingFee));
             setResult(calculatedPrice[0]); // Update the result state
             setRate(calculatedPrice[1]);
             console.log(rate)
@@ -68,8 +74,20 @@ const CurrencyCalculator = () => {
     return (
         <div>
             <div style={styles.container}>
-                <h1 style={styles.title}>Currency Conversion Calculator</h1>
+                <h1 style={styles.title}>カネハチ米国価格計算機</h1>
                 <div style={styles.inputContainer}>
+                    <label style={styles.label}>
+                        送料を入力してください:
+                        <input
+                            type="number"
+                            value={shippingFee}
+                            onChange={(e) => setShippingFee(e.target.value)}
+                            placeholder="例: 4400"
+                            style={styles.inputBox}
+                        />
+                        <span style={styles.inputLabel}><b>JPY</b></span>
+                    </label>
+
                     <label style={styles.label}>
                         値段を入力してください:
                         <input
@@ -81,12 +99,12 @@ const CurrencyCalculator = () => {
                         />
                         <span style={styles.inputLabel}><b>JPY</b></span>
                     </label>
-                    <button onClick={handleCalculate} style={styles.button}>Calculate</button>
+                    <button onClick={handleCalculate} style={styles.button}>計算</button>
                 </div>
                 {result !== null && (
                     <div style={styles.resultBox}>
                         <h2>新しい値段: ${result}</h2>
-                        <h2>1 USD = ¥{rate}</h2>
+                        <h2>(1 USD = ¥{rate})</h2>
                     </div>
                 )}
                 {error && (
@@ -116,7 +134,7 @@ const styles = {
     },
     title: {
         fontSize: "35px",
-        color: "#2B3BFF",
+        color: "#B53737",
         marginBottom: "20px",
         fontWeight: "bold",
         fontFamily: "Poppins, sans-serif",
