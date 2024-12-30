@@ -25,7 +25,7 @@ const calculatePriceWithCurrencyRates = async (fee, shippingFee) => {
             throw new Error("Rate is undefined or invalid.");
         }
         const oneToOneRatio = 100; // Customize this value
-        const bufferRate = 0.1; // Customize this value
+        const bufferRate = 0.15; // Customize this value
         // Paypal overhead
         const fixedFee = 49;
         const percentageFee = 0.044;
