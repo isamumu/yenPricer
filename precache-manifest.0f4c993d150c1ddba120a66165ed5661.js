@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "550274e2d8cf3be59f4b69f574540dea",
+    "revision": "53ee86bf0b591a6ee1ea951469243953",
     "url": "/yenPricer.github.io/index.html"
   },
   {
-    "revision": "ad4244e4fd57af67038a",
+    "revision": "dea816117994d17fa272",
     "url": "/yenPricer.github.io/static/css/main.5f8b9cbf.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/yenPricer.github.io/static/js/3.ba8b7f13.chunk.js"
   },
   {
-    "revision": "ad4244e4fd57af67038a",
-    "url": "/yenPricer.github.io/static/js/main.f8352433.chunk.js"
+    "revision": "dea816117994d17fa272",
+    "url": "/yenPricer.github.io/static/js/main.c48206da.chunk.js"
   },
   {
     "revision": "dcb79f29ea01699747b1",
